@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--ESTO ES UN COMENTARIO BOOOF-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ejemplo HTML</title> <!--ESTO SE VE EN LA VENTANA DEL NAVEGADOR-->
+</head>
+
+    <body>
+        <h1>Capitulo 1</h1>
+        <p>En un lugar de la urjc...</p>
+        <p>DIOS</p>
+        <h2>Capitulo 2</h2>
+        <p>23*2323 </p>
+        <button id="gei" style="position: absolute;transition: 0.1s;">Clik here</button>>
+        <script>
+            const btn = document.getElementById("gei");
+            btn.addEventListener("mouseover",()=>
+            {const x = Math.random()*(window.innerWidth -btn.clientWidth);
+            const y = Math.random()*(window.innerHeight -btn.clientHeight);
+            btn.style.left = x+'px'
+            btn.style.top = y+'px'
+            });
+        </script>
+    </body>
+</html>
