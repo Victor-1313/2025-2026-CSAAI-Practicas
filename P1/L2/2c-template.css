@@ -12,12 +12,39 @@ padding: 10px;
 min-height: 500px;
 }
 
+.referencia {
+    margin-bottom: 12px; /* espacio entre cada referencia */
+  }
+
+  .referencia h3 {
+    margin: 0 0 4px 0; /* menos espacio debajo del nombre */
+  }
+
+  .referencia p {
+    margin: 2px 0; /* reduce el espacio entre párrafos */
+  }
+
+.lista-emoji {
+    list-style-type: '💧 '; /* O usa emojis: ⚡, ✨, ❤️ */
+  }
+
+
+h1{
+    text-align: center;
+    border-color: aquamarine;
+    color:aqua;
+}
 .izquierda {
-width: 25%;
+width: 35%;
+border: 3px solid #1E90FF; /* Color azul del borde y grosor */
+  border-radius: 15px;        /* Bordes redondeados */
+  padding: 20px;              /* Espacio interno */
+  background-color: #f0f8ff;  /* Color de fondo opcional */
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2); /* Sombra suave opcional */
 }
 
 .derecha {
-width: 75%;
+width: 65%;
 }
 
 /* Clear floats despues de las columnas para eliminar la superposición */
@@ -39,14 +66,14 @@ clear: both;
 /* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
 
 img {
-    width: 100%;
+    width: 150%;
     height: auto;
 }
 
 .iresponsive {
     padding: 0 6px;
     float: left;
-    width: 50%;
+    width: 100%;
   }
 
 /* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
@@ -63,3 +90,47 @@ img {
 }
 
 /* Más sobre diseño web responsive https://www.w3schools.com/css/css_rwd_intro.asp */
+
+
+
+
+
+  /* Aplica Playfair Display a todo el documento */
+  body {
+    background-image: url("oceano_fondo.jpg");
+    font-family: 'Playfair Display', serif;
+    line-height: 1.5; /* para mejorar la lectura */
+    color: #0a0a0a; /* texto en un gris oscuro elegante */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 0.5em; /* espaciado entre títulos y párrafos */
+  }
+
+  p {
+    margin: 0.3em 0; /* párrafos más compactos */
+  }
+
+  
+  
+  .columna{
+    border: 3px solid #1E90FF; /* Color azul del borde y grosor */
+  border-radius: 15px;        /* Bordes redondeados */
+  padding: 20px;              /* Espacio interno */
+  background-color: #f0f8ff;  /* Color de fondo opcional */
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2); /* Sombra suave opcional */
+  }
+
+.sobremi {
+border-top: 4px solid #1E90FF; 
+border-bottom: 4px solid #1E90FF; 
+  border-radius: 20px 20px 20px 20px;
+  padding: 20px;
+}
+.sobremi2 {
+    border-top: 4px solid #0F4C81; 
+border-bottom: 4px solid #0F4C81; 
+  border-radius: 20px 20px 20px 20px;
+  padding: 20px;
+}
