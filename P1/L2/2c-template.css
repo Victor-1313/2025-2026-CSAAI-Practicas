@@ -122,7 +122,8 @@ img {
   box-shadow: 2px 2px 8px rgba(0,0,0,0.2); /* Sombra suave opcional */
   }
 
-.sobremi {
+
+/*.sobremi {
 border-top: 4px solid #1E90FF; 
 border-bottom: 4px solid #1E90FF; 
   border-radius: 20px 20px 20px 20px;
@@ -133,4 +134,30 @@ border-bottom: 4px solid #1E90FF;
 border-bottom: 4px solid #0F4C81; 
   border-radius: 20px 20px 20px 20px;
   padding: 20px;
-}
+}*/
+.sobremi {
+  background-color: #f0f8ff;
+  padding: 40px 20px;
+  position: relative;
+  
+  border-top: 4px solid #1E90FF; 
+  border-bottom: 4px solid #1E90FF; 
+  border-radius: 20px 20px 0 0;
+  --mask:
+    radial-gradient(55.34px at 50% calc(100% - 76.5px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%,
+    radial-gradient(55.34px at 50% calc(100% + 46.5px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
+  -webkit-mask: var(--mask);
+          mask: var(--mask);}
+.sobremi2 {
+  background-color: #e6f2ff;
+  padding: 40px 20px;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+
+  border-top: 4px solid #0F4C81; 
+  border-bottom: 4px solid #0F4C81; 
+--mask:
+    radial-gradient(55.34px at 50% calc(100% - 76.5px),#000 99%,#0000 101%) calc(50% - 60px) 0/120px 100%,
+    radial-gradient(55.34px at 50% calc(100% + 46.5px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
+  -webkit-mask: var(--mask);
+          mask: var(--mask);}
