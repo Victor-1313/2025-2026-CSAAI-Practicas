@@ -172,3 +172,10 @@ img {
   color: red;
   font-weight: bold;
 }
+
+
+#imghtml {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+}
