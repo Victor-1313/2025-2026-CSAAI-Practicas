@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mis Proyectos</title>
+<link rel="stylesheet" href="2c-template.css"> 
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+/* Contenedor de tarjetas */
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Tarjeta */
+.card {
+    background: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.tecnologias {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Botón */
+.boton {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.boton:hover {
+    background-color: #0056b3;
+}
+
+/* Botón volver */
+.volver {
+    display: block;
+    margin-top: 40px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+<section class=h1fondo>
+<h1>Mis Proyectos</h2>
+</section>
+<div class="contenedor">
+
+    <div class="card">
+        <h3>Escuela en el Mar</h3>
+        <p>Diseño conceptual de una escuela flotante sostenible en medio del océano.</p>
+        <p class="tecnologias"><strong>Tecnologías:</strong> HTML, CSS, Photoshop</p>
+        <a href="#" class="boton">Ver proyecto</a>
+    </div>
+
+    <div class="card">
+        <h3>App de Tareas</h3>
+        <p>Aplicación web para organizar tareas escolares con sistema de recordatorios.</p>
+        <p class="tecnologias"><strong>Tecnologías:</strong> HTML, CSS, JavaScript</p>
+        <a href="#" class="boton">Ver proyecto</a>
+    </div>
+
+    <div class="card">
+        <h3>Tienda Online</h3>
+        <p>Proyecto de e-commerce con carrito de compras y diseño adaptable.</p>
+        <p class="tecnologias"><strong>Tecnologías:</strong> HTML, CSS, Bootstrap</p>
+        <a href="#" class="boton">Ver proyecto</a>
+    </div>
+
+</div>
+
+<div class="volver">
+    <a href="Practica1_definitivo1.html" class="boton">⬅ Volver a Inicio</a>
+</div>
+
+</body>
+</html>

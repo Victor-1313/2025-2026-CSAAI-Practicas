@@ -32,7 +32,7 @@ min-height: 500px;
 h1{
     position: relative;
     text-align: center;
-    color: rgb(35, 190, 157);
+    color: rgb(122, 190, 176);
     padding: 60px 20px;
     font-size: 2.5rem;
     z-index: 1;
@@ -168,3 +168,7 @@ img {
   -webkit-mask: var(--mask);
           mask: var(--mask);}
 
+.activo {
+  color: red;
+  font-weight: bold;
+}
