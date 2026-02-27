@@ -28,11 +28,40 @@ min-height: 500px;
     list-style-type: '💧 '; /* O usa emojis: ⚡, ✨, ❤️ */
   }
 
-
+/*
 h1{
     text-align: center;
     border-color: aquamarine;
     color:aqua;
+    --mask:
+    radial-gradient(59.34px at 50% calc(100% + 46.5px),#0000 calc(99% - 8px),#000 calc(101% - 8px) 99%,#0000 101%) calc(50% - 60px) calc(50% - 19px + .5px)/120px 38px ,
+    radial-gradient(59.34px at 50% -46.5px,#0000 calc(99% - 8px),#000 calc(101% - 8px) 99%,#0000 101%) 50% calc(50% + 19px)/120px 38px ;
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
+}
+          */
+
+h1{
+    position: relative;
+    text-align: center;
+    color: rgb(35, 190, 157);
+    padding: 60px 20px;
+    font-size: 2.5rem;
+    z-index: 1;
+}
+
+.h1fondo{
+
+  background: linear-gradient(135deg, #001f5c, #0077ff, #00e0ff);
+
+  --mask:
+    radial-gradient(26.88px at 37.6px 50%,#000 99%,#0000 101%) 0 calc(50% - 32px)/51% 64px repeat-y,
+    radial-gradient(26.88px at -21.6px 50%,#0000 99%,#000 101%) 16px 50%/calc(51% - 16px) 64px repeat-y,
+    radial-gradient(26.88px at calc(100% - 37.6px) 50%,#000 99%,#0000 101%) 100% calc(50% - 32px)/51% 64px repeat-y,
+    radial-gradient(26.88px at calc(100% + 21.6px) 50%,#0000 99%,#000 101%) calc(100% - 16px) 50%/calc(51% - 16px) 64px repeat-y;
+
+  -webkit-mask: var(--mask);
+          mask: var(--mask);
 }
 .izquierda {
 width: 35%;
@@ -161,3 +190,4 @@ border-bottom: 4px solid #0F4C81;
     radial-gradient(55.34px at 50% calc(100% + 46.5px),#0000 99%,#000 101%) 50% calc(100% - 30px)/120px 100% repeat-x;
   -webkit-mask: var(--mask);
           mask: var(--mask);}
+
