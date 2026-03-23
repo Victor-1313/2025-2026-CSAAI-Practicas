@@ -67,3 +67,7 @@ caption{
     border-width: 5px;
     font-size: 250%;
 }
+table {
+    width: 100%;
+    table-layout: fixed;
+}
