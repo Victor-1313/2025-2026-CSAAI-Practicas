@@ -64,7 +64,7 @@ function generarClave() {
 function ocultarClave() {
     casillas.forEach(c => {
         c.textContent = "*";
-        c.style.color = "black";
+        c.style.color = "rgb(55, 196, 12)";
     });
 }
 
@@ -94,7 +94,6 @@ function comprobarNumero(num, boton) {
     intentosRestantes--;
     intentosUsados++;
 
-    intentosRestantes--;
     intentosTexto.textContent = intentosRestantes;
 
     let acierto = false;
