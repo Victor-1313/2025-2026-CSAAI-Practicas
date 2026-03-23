@@ -15,6 +15,7 @@ const botones = document.querySelectorAll(".boton");
 const startBtn = document.getElementById("bestart");
 const stopBtn = document.getElementById("bstop");
 const resetBtn = document.getElementById("breset");
+const intentosTexto = document.getElementById("intentos");
 
 // FORMATO TIEMPO
 function formatearTiempo(seg) {
@@ -76,6 +77,8 @@ function resetJuego() {
     intentosRestantes = intentosMax;
     intentosUsados = 0;
 
+    intentosTexto.textContent = intentosRestantes;
+    
     botones.forEach(b => {
         if (b.id.startsWith("b") && b.id.length === 2) {
             b.disabled = false;
@@ -90,6 +93,9 @@ function comprobarNumero(num, boton) {
 
     intentosRestantes--;
     intentosUsados++;
+
+    intentosRestantes--;
+    intentosTexto.textContent = intentosRestantes;
 
     let acierto = false;
 
