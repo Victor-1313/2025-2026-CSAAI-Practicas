@@ -1,0 +1,77 @@
+.boton{
+    width: 30%;
+    height: 100px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    color:rgb(55, 196, 12);
+    font-size: 250%;
+    border-color: gray;
+    border-width: 10px;
+}
+h1{
+    position: relative;
+    text-align: center;
+    color: rgb(55, 196, 12);
+    padding: 60px 20px;
+    font-size: 2.5rem;
+    z-index: 1;
+    
+}
+body{
+    background-color: black;
+}
+.tit{
+    border-color: gray;
+    border-width: 20px;
+}
+.caja3{
+    border:solid;
+    border-color: gray;
+    border-right-color: rgb(63, 63, 63);
+    border-bottom-color: rgb(63, 63, 63);
+    border-width: 10px;
+}
+.pantalla{
+    position: relative;
+    text-align: center;
+    color: rgb(55, 196, 12);
+    border: solid;
+    border-color: gray;
+    border-right-color: rgb(63, 63, 63);
+    border-bottom-color: rgb(63, 63, 63);
+    border-width: 20px;
+    padding: 60px 20px;
+    font-size: 2.5rem;
+    z-index: 1;
+    
+}
+th{
+    justify-content:center ;
+    align-content: center;
+    width: 30%;
+    height: 100px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border: solid;
+    border-color: gray;
+    border-right-color: rgb(63, 63, 63);
+    border-bottom-color: rgb(63, 63, 63);
+    border-width: 5px;
+    font-size: 250%;
+}
+caption{
+    border:solid;
+    border-color: gray;
+    border-right-color: rgb(63, 63, 63);
+    border-bottom-color: rgb(63, 63, 63);
+    border-width: 5px;
+    font-size: 250%;
+}
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+th {
+    width: 25%;
+}
