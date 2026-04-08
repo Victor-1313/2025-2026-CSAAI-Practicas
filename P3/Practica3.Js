@@ -6,17 +6,17 @@ canvas.height = 600;
 
 // ======== IMÁGENES ========
 const playerImg = new Image();
-playerImg.src = "assets/nave.png";
+playerImg.src = "recursos/nave.png";
 
 const alienImg = new Image();
-alienImg.src = "assets/alien.png";
+alienImg.src = "recursos/alien.png";
 
 const explosionImg = new Image();
-explosionImg.src = "assets/explosion.png";
+explosionImg.src = "recursos/explosion.png";
 
 // ======== SONIDOS ========
-const laserSound = new Audio("assets/laser.wav");
-const explosionSound = new Audio("assets/explosion.wav");
+const laserSound = new Audio("recursos/laser.wav");
+const explosionSound = new Audio("recursos/explosion.mp3");
 
 // ======== PLAYER ========
 const player = {
