@@ -167,6 +167,47 @@ function update() {
     }
   });
 
+  function restartGame() {
+  // jugador
+  player.x = canvas.width / 2 - 25;
+  player.lives = 3;
+  player.energy = player.maxEnergy;
+
+  // balas
+  bullets = [];
+  enemyBullets = [];
+  explosions = [];
+
+  // aliens
+  aliens = [];
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      aliens.push({
+        x: 80 + c * 70,
+        y: 50 + r * 50,
+        width: 40,
+        height: 30,
+        alive: true
+      });
+    }
+  }
+
+  // estado
+  score = 0;
+  alienSpeed = 1;
+  direction = 1;
+  gameOver = false;
+  win = false;
+}
+
+
+document.addEventListener("keydown", e => {
+  if (e.code === "Enter" && gameOver) {
+    restartGame();
+  }
+});
+
+
   // mover aliens
   let edge = false;
 
@@ -236,15 +277,20 @@ function draw() {
     });
 
   // fin del juego
-  if (gameOver) {
-    ctx.font = "40px Arial";
-    ctx.textAlign = "center";
+ if (gameOver) {
+  ctx.font = "40px Arial";
+  ctx.textAlign = "center";
 
-    if (win) {
-      ctx.fillText("¡VICTORIA!", canvas.width/2, canvas.height/2);
-    } else {
-      ctx.fillText("GAME OVER", canvas.width/2, canvas.height/2);
-    }
+  if (win) {
+    ctx.fillText("¡VICTORIA!", canvas.width/2, canvas.height/2);
+  } else {
+    ctx.fillText("GAME OVER", canvas.width/2, canvas.height/2);
+  }
+
+  // 👇 mensaje extra
+  ctx.font = "20px Arial";
+  ctx.fillText("Pulsa ENTER para jugar otra vez", canvas.width/2, canvas.height/2 + 40);
+}
   }
 }
 
