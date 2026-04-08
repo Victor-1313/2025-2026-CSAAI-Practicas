@@ -4,6 +4,20 @@ const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 600;
 
+// ======== IMÁGENES ========
+const playerImg = new Image();
+playerImg.src = "assets/nave.png";
+
+const alienImg = new Image();
+alienImg.src = "assets/alien.png";
+
+const explosionImg = new Image();
+explosionImg.src = "assets/explosion.png";
+
+// ======== SONIDOS ========
+const laserSound = new Audio("assets/laser.wav");
+const explosionSound = new Audio("assets/explosion.wav");
+
 // ======== PLAYER ========
 const player = {
   x: canvas.width / 2 - 25,
@@ -24,6 +38,7 @@ document.addEventListener("keyup", e => keys[e.code] = false);
 // ======== BULLETS ========
 let bullets = [];
 let enemyBullets = [];
+let explosions = [];
 
 // ======== ALIENS ========
 let aliens = [];
@@ -66,7 +81,8 @@ function shoot() {
       height: 10
     });
     player.energy--;
-
+    laserSound.currentTime = 0;
+    laserSound.play();
     console.log("pew");
   }
 }
@@ -119,6 +135,17 @@ function update() {
         a.alive = false;
         b.y = -100;
         score += 10;
+
+        // explosión
+        explosions.push({
+        x: a.x,
+        y: a.y,
+        frame: 0
+        });
+
+        // sonido
+        explosionSound.currentTime = 0;
+        explosionSound.play();
       }
     });
   });
@@ -175,13 +202,13 @@ function draw() {
 
   // jugador
   ctx.fillStyle = "cyan";
-  ctx.fillRect(player.x, player.y, player.width, player.height);
+  ctx.drawImage(playerImg, player.x, player.y, player.width, player.height);
 
   // aliens
   ctx.fillStyle = "lime";
   aliens.forEach(a => {
     if (a.alive)
-      ctx.fillRect(a.x, a.y, a.width, a.height);
+      ctx.drawImage(alienImg, a.x, a.y, a.width, a.height);
   });
 
   // balas
@@ -197,6 +224,16 @@ function draw() {
   ctx.fillText("Puntos: " + score, 10, 20);
   ctx.fillText("Vidas: " + player.lives, 10, 50);
   ctx.fillText("Energía: " + player.energy, 10, 80);
+
+  // Explosiones
+    explosions.forEach((exp, index) => {
+    ctx.drawImage(explosionImg, exp.x, exp.y, 40, 40);
+    exp.frame++;
+
+    if (exp.frame > 15) {
+        explosions.splice(index, 1);
+    }
+    });
 
   // fin del juego
   if (gameOver) {
