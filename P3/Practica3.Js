@@ -18,31 +18,31 @@ explosionImg.src = "recursos/explosion.png";
 const laserSound = new Audio("recursos/laser.wav");
 const explosionSound = new Audio("recursos/explosion.mp3");
 
-// ======== PLAYER ========
+// ======== JUGADOR ========
 const player = {
   x: canvas.width / 2 - 25,
-  y: canvas.height - 60,
-  width: 50,
-  height: 20,
+  y: canvas.height - 100,
+  width: 100 ,
+  height: 100,
   speed: 6,
   lives: 3,
   energy: 5,
   maxEnergy: 5
 };
 
-// ======== INPUT ========
+// ======== controles ========
 let keys = {};
 document.addEventListener("keydown", e => keys[e.code] = true);
 document.addEventListener("keyup", e => keys[e.code] = false);
 
-// ======== BULLETS ========
+// ======== lasers ========
 let bullets = [];
 let enemyBullets = [];
 let explosions = [];
 
 // ======== ALIENS ========
 let aliens = [];
-let rows = 4;
+let rows = 4; // como en TDI
 let cols = 8;
 let alienSpeed = 1;
 let direction = 1;
@@ -59,12 +59,12 @@ for (let r = 0; r < rows; r++) {
   }
 }
 
-// ======== GAME STATE ========
+// ======== stado ========
 let score = 0;
 let gameOver = false;
 let win = false;
 
-// ======== ENERGY RECHARGE ========
+// ======== recarga de energia ========
 setInterval(() => {
   if (player.energy < player.maxEnergy) {
     player.energy++;
@@ -160,7 +160,9 @@ function update() {
     ) {
       b.y = canvas.height + 100;
       player.lives--;
-
+      // sonido
+        explosionSound.currentTime = 0;
+        explosionSound.play();
       if (player.lives <= 0) {
         gameOver = true;
       }
@@ -292,7 +294,7 @@ function draw() {
   ctx.fillText("Pulsa ENTER para jugar otra vez", canvas.width/2, canvas.height/2 + 40);
 }
   }
-}
+
 
 // ======== LOOP ========
 function gameLoop() {
