@@ -39,14 +39,59 @@ function cambiarImagenes() {
 
   // limpiar contenedor
   contenedor.innerHTML = "";
-
-  // crear imágenes
-  imagenes.forEach(src => {
-    const img = document.createElement("img");
-    img.src = src;
-    img.style.width = "100px";
-    contenedor.appendChild(img);
-  });
+// NIVEL //
+  let valor = select.value;
+  document.getElementById("contador").textContent = valor
+  if (valor === "1"){
+    document.getElementById("img1").src = imagenes[0];
+    document.getElementById("img2").src = imagenes[0];
+    document.getElementById("img3").src = imagenes[0];
+    document.getElementById("img4").src = imagenes[0];
+    document.getElementById("img5").src = imagenes[1];
+    document.getElementById("img6").src = imagenes[1];
+    document.getElementById("img7").src = imagenes[1];
+    document.getElementById("img8").src = imagenes[1];
+  }
+  if (valor === "2"){
+    document.getElementById("img1").src = imagenes[0];
+    document.getElementById("img2").src = imagenes[0];
+    document.getElementById("img3").src = imagenes[0];
+    document.getElementById("img4").src = imagenes[1];
+    document.getElementById("img5").src = imagenes[1];
+    document.getElementById("img6").src = imagenes[1];
+    document.getElementById("img7").src = imagenes[0];
+    document.getElementById("img8").src = imagenes[1];
+  }
+  if (valor === "3"){
+    document.getElementById("img1").src = imagenes[0];
+    document.getElementById("img2").src = imagenes[1];
+    document.getElementById("img3").src = imagenes[0];
+    document.getElementById("img4").src = imagenes[1];
+    document.getElementById("img5").src = imagenes[0];
+    document.getElementById("img6").src = imagenes[1];
+    document.getElementById("img7").src = imagenes[0];
+    document.getElementById("img8").src = imagenes[1];
+  }
+  if (valor === "4"){
+    document.getElementById("img1").src = imagenes[0];
+    document.getElementById("img2").src = imagenes[1];
+    document.getElementById("img3").src = imagenes[1];
+    document.getElementById("img4").src = imagenes[0];
+    document.getElementById("img5").src = imagenes[1];
+    document.getElementById("img6").src = imagenes[0];
+    document.getElementById("img7").src = imagenes[0];
+    document.getElementById("img8").src = imagenes[1];
+  }
+  if (valor === "5"){
+    document.getElementById("img1").src = imagenes[0];
+    document.getElementById("img2").src = imagenes[1];
+    document.getElementById("img3").src = imagenes[0];
+    document.getElementById("img4").src = imagenes[0];
+    document.getElementById("img5").src = imagenes[1];
+    document.getElementById("img6").src = imagenes[1];
+    document.getElementById("img7").src = imagenes[1];
+    document.getElementById("img8").src = imagenes[0];
+  }
 }
 
 // RESALTADOR DE IMAGENES //
