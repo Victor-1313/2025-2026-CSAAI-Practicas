@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalitySelect = document.querySelector('select[name="Modalidad"]');
 
   // ===== AUDIO =====
-  const audio = new Audio("P4/recursos/P4.mp3"); // cambia el archivo si quieres
+  const audio = new Audio("P4.mp3"); // cambia el archivo si quieres
   audio.loop = true;
   let musicOn = false;
 
