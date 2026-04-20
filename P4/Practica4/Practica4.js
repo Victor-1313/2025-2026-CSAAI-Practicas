@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     difficultySelect.disabled = disabled;
     modalitySelect.disabled = disabled;
     startBtn.disabled = disabled;
-    stopBtn.disabled = disabled;
+    stopBtn.disabled = false;
   }
 
   function timerTextUpdate() {
@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // =5 cargar imágenes según modalidad y nivel
       const grid = loadImagesFromGrid(lvl, modality);
 
-      const speed = Math.max(200, 1000 - lvl * 150);
+      const speed = Math.max(200, 1000 - lvl * 120);
 
       setState("Nivel " + lvl);
 
@@ -212,7 +212,15 @@ document.addEventListener("DOMContentLoaded", () => {
     disableControls(false);
     setState("Finalizado");
 
-    alert("¡Partida terminada!");
+  setState("< ¡FELICIDADES! HAS COMPLETADO EL JUEGO <");
+  const winAudio = new Audio("win.mp3");
+  winAudio.loop = false;
+  winAudio.play().catch(() => {});
+
+  // opcional: mensaje emergente bonito
+  setTimeout(() => {
+    alert("< ¡Enhorabuena! Has completado los 5 niveles!");
+  }, 300);
   }
 
   // ===== STOP =====
