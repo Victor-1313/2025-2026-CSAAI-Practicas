@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRACTICA 4 CSAAI 2026</title>
+
+   <!-- Hoja de estilo -->
+   <link rel="stylesheet" href="Practica4.css">    
+
+</head>
+<body>
+    <section class = h1fondo>
+    <table>
+        <tr>
+            <th><h1>Beat the Word</h1></th>
+            <th>
+            <div class="contenedor">
+
+                <div class="card">
+                    <h3>Nivel</h3>
+                    <p>1/5</p>
+                </div>
+                <div class="card">
+                    <h3>Tiempo</h3>
+                    <p id = "contador">0.0s</p>
+                </div>
+                <div class="card">
+                    <h3>Estado</h3>
+                    <p id = estado>En espera</p>
+                </div>
+            </th>
+</div>
+        </tr>
+        <tr>
+            <td><h2>Sigue la secuencia al ritmo de la musica</h2></td>
+            <td><button>Musica ON/OFF</button></td>
+        </tr>
+    </table>
+    <div class="fila">
+      <div id="c1" class="columna izquierda">
+        <section class = tutorial>
+            <h2>¿Como funciona?</h2>
+            <p>Muy facil :) solo tienes que decir la palabra de la casilla remarcada al ritmo de la musica</p>
+        </section>
+        <section class = conf>
+            <h2>Configuracion</h2>
+            <select name=Dificultad>
+                <option>Nivel 1</option>
+                <option>Nivel 2</option>
+                <option>Nivel 3</option>
+                <option>Nivel 4</option>
+                <option>Nivel 5</option>
+            </select>
+            <select name=Modalidad>
+                <option>Mesa / Pesa</option>
+                <option>Luna / Cuna</option>
+                <option>Pato / Plato</option>
+                <option>Tapa/ Mapa/ Lata</option>
+            </select>
+        </section>
+        <section class ="menu">
+            <h2>Menu</h2>
+            <button>Empezar partida</button>
+            <button>Detener</button>
+        </section>
+      </div>
+    </section>
+      <div id="c2" class="columna derecha">
+        <center>
+        <button onclick= "iniciarContador()">EMPEZAR</button>
+        </center>
+        <center>
+        <table class = Imagenes>
+            
+        <tr>
+            <th><img src = "/home/alumnos/victor/CSAAI/2025-2026-CSAAI-Practicas/P4/recursos/urjc-logo.png"></th><th><img src = "urjc-logo.png"></th><th><img src = "urjc-logo.png"></th><th><img src = "urjc-logo.png"></th>
+        </tr>
+        <tr>
+            <td><img src = "urjc-logo.png"></td><td><img src = "urjc-logo.png"></td><td><img src = "urjc-logo.png"></td><td><img src = "urjc-logo.png"></td>
+        </tr>
+        </center>
+    </table>
+    </div>
+</section>
+</body>
+</html>

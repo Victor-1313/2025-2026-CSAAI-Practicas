@@ -1,0 +1,189 @@
+* {
+    box-sizing: border-box;
+  }
+  
+/* Crear columnas de ancho diferente que se colocan una a continuación de la otra */
+.columna {
+float: left;
+padding: 10px;
+min-height: 600px;
+}
+
+.referencia {
+    margin-bottom: 12px; /* espacio entre cada referencia */
+  }
+  .referencia h3 {
+    margin: 0 0 4px 0; /* menos espacio debajo del nombre */
+  }
+  .referencia p {
+    margin: 2px 0; /* reduce el espacio entre párrafos */
+  }
+h1{
+    position: relative;
+    text-align:left;
+    color: rgb(122, 190, 176);
+    padding: 60px 20px;
+    font-size: 2.5rem;
+    z-index: 1;
+}
+
+.h1fondo{
+  background: linear-gradient(135deg, #001f5c, #0077ff, #00e0ff);
+}
+.izquierda {
+width: 25%;
+border: 3px solid #1E90FF; /* Color azul del borde y grosor */
+  border-radius: 15px;        /* Bordes redondeados */
+  padding: 20px;              /* Espacio interno */
+  background-color: #f0f8ff;  /* Color de fondo opcional */
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2); /* Sombra suave opcional */
+}
+
+.derecha {
+width: 75%;
+}
+
+/* Clear floats despues de las columnas para eliminar la superposición */
+.filla:after {
+content: "";
+display: table;
+clear: both;
+}
+
+#c1 {
+    background-color:#D4E4F2;
+}
+
+#c2 {
+    background-color:#B1BFDF;
+}
+
+/* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
+/* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
+
+img {
+    width: 150%;
+    height: auto;
+}
+
+.iresponsive {
+    padding: 0 6px;
+    float: left;
+    width: 100%;
+  }
+
+/* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
+/* Así conseguimos que el contenido se vea bien en dispositvos móviles */
+
+@media screen and (max-width: 600px) {
+    .columna {
+      width: 100%;
+    }
+
+    .iresponsive {
+        width: 100%;
+    }
+}
+
+  body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.5; /* para mejorar la lectura */
+    color: #0a0a0a; /* texto en un gris oscuro elegante */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    color: rgb(122, 190, 176);
+    margin-bottom: 0.5em; /* espaciado entre títulos y párrafos */
+  }
+  td{
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 0.5em;
+  }
+  p {
+    margin: 0.3em 0; /* párrafos más compactos */
+  }
+  
+  .columna{
+  border: 3px solid #1E90FF; /* Color azul del borde y grosor */
+  border-radius: 15px;        /* Bordes redondeados */
+  padding: 20px;              /* Espacio interno */
+  background-color: #f0f8ff;  /* Color de fondo opcional */
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2); /* Sombra suave opcional */
+  }
+.activo {
+  color: red;
+  font-weight: bold;
+}
+
+
+#imghtml {
+    width: 80px;
+    height: auto;
+}
+
+button{
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 0.5em;
+  border: 3px solid #1E90FF; /* Color azul del borde y grosor */
+  border-radius: 15px;        /* Bordes redondeados */
+  padding: 20px;              /* Espacio interno */
+  background-color: #f0f8ff;  /* Color de fondo opcional */
+}
+select{
+  font-family: 'Playfair Display', serif;
+  border: 3px solid #1E90FF; /* Color azul del borde y grosor */
+  padding: 5px;              /* Espacio interno */
+  background-color: #f0f8ff;  /* Color de fondo opcional */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+/* Contenedor de tarjetas */
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+
+/* Botón */
+.boton {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.boton:hover {
+    background-color: #0056b3;
+}
+
+/* Botón volver */
+.volver {
+    display: block;
+    margin-top: 40px;
+    text-align: center;
+}
