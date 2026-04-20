@@ -2,9 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   // ===== ELEMENTOS =====
-  const imgs = Array.from({ length: 8 }, (_, i) =>
-    document.getElementById(`img${i + 1}`)
-  );
+  const imgs = ["mesa.png","pesa.png","luna.png","cuna.png","pato.png","plato.jpeg","tapa.jpeg","mapa.jpeg","lata.png"];
 
   const nivelText = document.getElementById("nivel");
   const tiempoText = document.getElementById("contador");
@@ -26,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalitySelect = document.querySelector('select[name="Modalidad"]');
 
   // ===== AUDIO =====
-  const audio = new Audio("music.mp3"); // cambia el archivo si quieres
+  const audio = new Audio("P4/recursos/P4.mp3"); // cambia el archivo si quieres
   audio.loop = true;
   let musicOn = false;
 
