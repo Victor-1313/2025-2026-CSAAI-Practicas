@@ -1,97 +1,218 @@
-let segundos = 0;
-let intervalo = null;
+document.addEventListener("DOMContentLoaded", () => {
 
-// CONTADOR //
-function iniciarContador() {
-    console.log("empezado contador")
-  if (intervalo !== null) return; 
-  intervalo = setInterval(() => {
-    segundos+= 0.1;
-    document.getElementById("contador").textContent = segundos.toFixed(1);
-  }, 100);
-}
+  // ===== ELEMENTOS =====
+  const imgs = Array.from(document.querySelectorAll("img[id^='img']"));
 
-// CAMBIADOR DE IMAGENES //
-const select = document.getElementById("modo");
-const contenedor = document.getElementById("imagenes");
+  const nivelText = document.getElementById("nivel");
+  const contadorText = document.getElementById("contador");
+  const estadoText = document.getElementById("estado");
 
-select.addEventListener("change", cambiarImagenes);
+  const musicBtn = Array.from(document.querySelectorAll("button"))
+    .find(b => b.textContent.toLowerCase().includes("musica"));
 
-function cambiarImagenes() {
-  let valor = select.value;
+  const startBtn = Array.from(document.querySelectorAll("button"))
+    .find(b => b.textContent.toLowerCase().includes("empezar partida"));
 
-  let imagenes = [];
+  const stopBtn = Array.from(document.querySelectorAll("button"))
+    .find(b => b.textContent.toLowerCase().includes("detener"));
 
-  if (valor === "mesa") {
-    imagenes = ["/home/alumnos/victor/CSAAI/2025-2026-CSAAI-Practicas/P4/recursos/mesa.png", "/home/alumnos/victor/CSAAI/2025-2026-CSAAI-Practicas/P4/recursos/pesa.png"];
+  const bigStartBtn = document.querySelector("button[onclick]");
+
+  const difficultySelect = document.querySelector('select[name="Dificultad"]');
+  const modalitySelect = document.querySelector('select[name="Modalidad"]');
+
+  // ===== AUDIO =====
+  const audio = new Audio("P4.mp3");
+  audio.loop = true;
+  let musicOn = false;
+
+  // ===== ESTADO =====
+  let currentLevel = 1;
+  let timer = 0;
+  let timerInterval = null;
+
+  let running = false;
+  let stopRequested = false;
+  let sequenceTimeouts = [];
+
+  // ===== UTILIDADES =====
+  function setState(text) {
+    estadoText.textContent = text;
   }
 
-  if (valor === "luna") {
-    imagenes = ["/home/alumnos/victor/CSAAI/2025-2026-CSAAI-Practicas/P4/recursos/luna.png", "/home/alumnos/victor/CSAAI/2025-2026-CSAAI-Practicas/P4/recursos/cuna.png"];
+  function resetHighlights() {
+    imgs.forEach(img => img.classList.remove("active"));
   }
 
-  if (valor === "pato") {
-    imagenes = ["/home/alumnos/victor/CSAAI/2025-2026-CSAAI-Practicas/P4/recursos/pato.png", "/home/alumnos/victor/CSAAI/2025-2026-CSAAI-Practicas/P4/recursos/plato.jpeg"];
-  }
-  if (valor === "tapa") {
-    imagenes = ["/home/alumnos/victor/CSAAI/2025-2026-CSAAI-Practicas/P4/recursos/tapa.jpeg", "/home/alumnos/victor/CSAAI/2025-2026-CSAAI-Practicas/P4/recursos/mapa.jpeg","/home/alumnos/victor/CSAAI/2025-2026-CSAAI-Practicas/P4/recursos/lata.png"];
+  function disableControls(disabled) {
+    difficultySelect.disabled = disabled;
+    modalitySelect.disabled = disabled;
+    startBtn.disabled = disabled;
+    stopBtn.disabled = disabled;
   }
 
-  // limpiar contenedor
-  contenedor.innerHTML = "";
-// NIVEL //
-  let valor = select.value;
-  document.getElementById("contador").textContent = valor
-  if (valor === "1"){
-    document.getElementById("img1").src = imagenes[0];
-    document.getElementById("img2").src = imagenes[0];
-    document.getElementById("img3").src = imagenes[0];
-    document.getElementById("img4").src = imagenes[0];
-    document.getElementById("img5").src = imagenes[1];
-    document.getElementById("img6").src = imagenes[1];
-    document.getElementById("img7").src = imagenes[1];
-    document.getElementById("img8").src = imagenes[1];
+  function timerTextUpdate() {
+    contadorText.textContent = timer;
   }
-  if (valor === "2"){
-    document.getElementById("img1").src = imagenes[0];
-    document.getElementById("img2").src = imagenes[0];
-    document.getElementById("img3").src = imagenes[0];
-    document.getElementById("img4").src = imagenes[1];
-    document.getElementById("img5").src = imagenes[1];
-    document.getElementById("img6").src = imagenes[1];
-    document.getElementById("img7").src = imagenes[0];
-    document.getElementById("img8").src = imagenes[1];
-  }
-  if (valor === "3"){
-    document.getElementById("img1").src = imagenes[0];
-    document.getElementById("img2").src = imagenes[1];
-    document.getElementById("img3").src = imagenes[0];
-    document.getElementById("img4").src = imagenes[1];
-    document.getElementById("img5").src = imagenes[0];
-    document.getElementById("img6").src = imagenes[1];
-    document.getElementById("img7").src = imagenes[0];
-    document.getElementById("img8").src = imagenes[1];
-  }
-  if (valor === "4"){
-    document.getElementById("img1").src = imagenes[0];
-    document.getElementById("img2").src = imagenes[1];
-    document.getElementById("img3").src = imagenes[1];
-    document.getElementById("img4").src = imagenes[0];
-    document.getElementById("img5").src = imagenes[1];
-    document.getElementById("img6").src = imagenes[0];
-    document.getElementById("img7").src = imagenes[0];
-    document.getElementById("img8").src = imagenes[1];
-  }
-  if (valor === "5"){
-    document.getElementById("img1").src = imagenes[0];
-    document.getElementById("img2").src = imagenes[1];
-    document.getElementById("img3").src = imagenes[0];
-    document.getElementById("img4").src = imagenes[0];
-    document.getElementById("img5").src = imagenes[1];
-    document.getElementById("img6").src = imagenes[1];
-    document.getElementById("img7").src = imagenes[1];
-    document.getElementById("img8").src = imagenes[0];
-  }
-}
 
-// RESALTADOR DE IMAGENES //
+  function updateTimer() {
+    timerInterval = setInterval(() => {
+      timer++;
+      timerTextUpdate();
+    }, 1000);
+  }
+
+  function stopTimer() {
+    clearInterval(timerInterval);
+  }
+
+  function stopAllTimeouts() {
+    sequenceTimeouts.forEach(t => clearTimeout(t));
+    sequenceTimeouts = [];
+  }
+
+  // ===== MUSICA =====
+  musicBtn.addEventListener("click", () => {
+    musicOn = !musicOn;
+
+    if (musicOn && running) {
+      audio.play().catch(() => {});
+    } else {
+      audio.pause();
+    }
+  });
+
+  // ===== GRID =====
+  function getGrid(modality) {
+    const sets = {
+      mesa: ["mesa", "mesa", "mesa", "mesa", "pesa", "pesa", "pesa", "pesa"],
+      luna: ["luna", "cuna", "luna", "cuna", "luna", "cuna", "luna", "cuna"],
+      pato: ["pato", "plato", "plato", "pato", "pato", "plato", "plato", "pato"],
+      tapa: ["tapa", "mapa", "lata", "tapa", "mapa", "lata", "tapa", "mapa"]
+    };
+
+    let base = sets[modality] || sets.mesa;
+
+    // shuffle simple
+    return base.slice().sort(() => Math.random() - 0.5);
+  }
+
+  // ===== SECUENCIA =====
+  function highlightSequence(modality, speed) {
+    const grid = getGrid(modality);
+
+    return new Promise((resolve) => {
+      let i = 0;
+
+      function step() {
+        if (!running || stopRequested) return;
+
+        resetHighlights();
+
+        if (imgs[i]) {
+          imgs[i].classList.add("active");
+
+          // opcional: mostrar palabra en alt
+          imgs[i].alt = grid[i];
+        }
+
+        i++;
+
+        if (i < imgs.length) {
+          const t = setTimeout(step, speed);
+          sequenceTimeouts.push(t);
+        } else {
+          const t = setTimeout(resolve, speed);
+          sequenceTimeouts.push(t);
+        }
+      }
+
+      step();
+    });
+  }
+
+  // ===== JUEGO =====
+  async function playGame() {
+
+    running = true;
+    stopRequested = false;
+
+    const startLevel = parseInt(difficultySelect.value);
+    const modality = modalitySelect.value;
+
+    timer = 0;
+    timerTextUpdate();
+    updateTimer();
+
+    disableControls(true);
+    setState("Jugando");
+
+    if (musicOn) {
+      audio.play().catch(() => {});
+    }
+
+    for (let lvl = startLevel; lvl <= 5; lvl++) {
+
+      if (stopRequested) break;
+
+      nivelText.textContent = `${lvl}/5`;
+
+      setState("Preparación");
+      await new Promise(r => setTimeout(r, 800));
+
+      if (stopRequested) break;
+
+      const speed = Math.max(200, 1000 - lvl * 150);
+
+      setState("Nivel " + lvl);
+
+      await highlightSequence(modality, speed);
+    }
+
+    endGame();
+  }
+
+  // ===== FINAL =====
+  function endGame() {
+    running = false;
+    stopRequested = false;
+
+    stopTimer();
+    stopAllTimeouts();
+    resetHighlights();
+
+    audio.pause();
+    audio.currentTime = 0;
+
+    disableControls(false);
+    setState("Finalizado");
+
+    alert("¡Partida terminada!");
+  }
+
+  // ===== STOP =====
+  function stopGame() {
+    if (!running) return;
+
+    stopRequested = true;
+    running = false;
+
+    stopTimer();
+    stopAllTimeouts();
+    resetHighlights();
+
+    audio.pause();
+
+    disableControls(false);
+    setState("Detenido");
+  }
+
+  // ===== BOTONES =====
+  startBtn.addEventListener("click", playGame);
+  stopBtn.addEventListener("click", stopGame);
+
+  if (bigStartBtn) {
+    bigStartBtn.addEventListener("click", playGame);
+  }
+
+});
