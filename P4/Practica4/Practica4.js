@@ -27,12 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let musicOn = false;
 
   // ===== ESTADO =====
-  let currentLevel = 1;
   let timer = 0;
   let timerInterval = null;
 
   let running = false;
   let stopRequested = false;
+
   let sequenceTimeouts = [];
 
   // ===== UTILIDADES =====
@@ -55,7 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
     contadorText.textContent = timer;
   }
 
-  function updateTimer() {
+  function startTimer() {
+    timer = 0;
+    timerTextUpdate();
+
     timerInterval = setInterval(() => {
       timer++;
       timerTextUpdate();
@@ -82,8 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ===== GRID =====
-  function getGrid(modality) {
+  // ===== GRID (YA EXISTE EN TU CÓDIGO ORIGINAL) =====
+  function getGrid(level, modality) {
+
     const sets = {
       mesa: ["mesa", "mesa", "mesa", "mesa", "pesa", "pesa", "pesa", "pesa"],
       luna: ["luna", "cuna", "luna", "cuna", "luna", "cuna", "luna", "cuna"],
@@ -93,27 +97,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let base = sets[modality] || sets.mesa;
 
-    // shuffle simple
-    return base.slice().sort(() => Math.random() - 0.5);
+    // shuffle controlado por nivel
+    for (let i = 0; i < level; i++) {
+      base = base.slice().sort(() => Math.random() - 0.5);
+    }
+
+    return base;
   }
 
-  // ===== SECUENCIA =====
-  function highlightSequence(modality, speed) {
-    const grid = getGrid(modality);
+  // ===== CONVERTIR PALABRA A IMAGEN =====
+  function wordToImage(word) {
+    return word + ".png";
+  }
+
+  // ===== CARGAR IMÁGENES ANTES DEL NIVEL =====
+  function loadImagesFromGrid(level, modality) {
+    const grid = getGrid(level, modality);
+
+    imgs.forEach((img, i) => {
+      img.src = wordToImage(grid[i]);
+      img.classList.remove("active");
+    });
+
+    return grid;
+  }
+
+  // ===== SECUENCIA (SOLO BORDE ROJO) =====
+  function highlightSequence(grid, speed) {
 
     return new Promise((resolve) => {
+
       let i = 0;
 
       function step() {
+
         if (!running || stopRequested) return;
 
         resetHighlights();
 
         if (imgs[i]) {
           imgs[i].classList.add("active");
-
-          // opcional: mostrar palabra en alt
-          imgs[i].alt = grid[i];
         }
 
         i++;
@@ -131,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ===== JUEGO =====
+  // ===== JUEGO PRINCIPAL =====
   async function playGame() {
 
     running = true;
@@ -140,12 +163,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const startLevel = parseInt(difficultySelect.value);
     const modality = modalitySelect.value;
 
-    timer = 0;
-    timerTextUpdate();
-    updateTimer();
-
     disableControls(true);
     setState("Jugando");
+
+    startTimer();
 
     if (musicOn) {
       audio.play().catch(() => {});
@@ -158,15 +179,18 @@ document.addEventListener("DOMContentLoaded", () => {
       nivelText.textContent = `${lvl}/5`;
 
       setState("Preparación");
-      await new Promise(r => setTimeout(r, 800));
+      await new Promise(r => setTimeout(r, 600));
 
       if (stopRequested) break;
+
+      // =5 cargar imágenes según modalidad y nivel
+      const grid = loadImagesFromGrid(lvl, modality);
 
       const speed = Math.max(200, 1000 - lvl * 150);
 
       setState("Nivel " + lvl);
 
-      await highlightSequence(modality, speed);
+      await highlightSequence(grid, speed);
     }
 
     endGame();
@@ -174,6 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== FINAL =====
   function endGame() {
+
     running = false;
     stopRequested = false;
 
@@ -192,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== STOP =====
   function stopGame() {
+
     if (!running) return;
 
     stopRequested = true;
