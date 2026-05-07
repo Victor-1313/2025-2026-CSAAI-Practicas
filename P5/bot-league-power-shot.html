@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bot League: Power Shot Edition</title>
+  <link rel="stylesheet" href="bot-league-power-shot.css">
+  <!-- Asegúrate de que el nombre del archivo JS coincida con el que usas -->
+  <script src="bot-league-power-shot.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <h1>Bot League: Power Shot</h1>
+      <p>
+        Un simulador de fútbol con mecánicas de carga de potencia. 
+        Domina el <strong>Power Shot</strong> para vencer a la IA.
+      </p>
+    </header>
+
+    <section class="layout">
+      <!-- Área principal de juego -->
+      <section class="stage">
+        <!-- Dimensiones ajustadas para un campo de juego equilibrado -->
+        <canvas id="gameCanvas" width="800" height="500"></canvas>
+      </section>
+
+      <!-- Panel lateral de información y control -->
+      <aside class="panel">
+        <div class="block">
+          <h2>Estado del Partido</h2>
+          <p id="state">Esperando elección de modo...</p>
+        </div>
+
+        <div class="block">
+          <h2>Controles de Juego</h2>
+          <ul style="list-style: none; padding-left: 0;">
+            <li><strong>Moverse:</strong> Flechas de dirección</li>
+            <li><strong>Cargar Tiro:</strong> Mantener Espacio</li>
+            <li><strong>Chutar:</strong> Soltar Espacio</li>
+            <li><strong>Reiniciar/Menú:</strong> Tecla R</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <h2>Modos de Juego</h2>
+          <p>En el menú principal presiona:</p>
+          <ul>
+            <li><strong>[1]</strong> Partido a 3 Goles</li>
+            <li><strong>[2]</strong> Gol de Oro (Muerte súbita)</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <h2>Cómo Jugar</h2>
+          <p>
+            Acércate al balón y mantén espacio para acumular energía. 
+            El bot intentará robarte el balón o defender su portería. 
+            ¡Apunta bien antes de soltar!
+          </p>
+        </div>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
